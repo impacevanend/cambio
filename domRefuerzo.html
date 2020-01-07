@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style>
+
+     *{
+         font-family: sans-serif;
+     } 
+
+    .miClase{
+        color: #FF881F;
+
+    }
+
+    .otraClase{
+        color:#6517B8;
+
+    }
+    
+    .otraClase:hover{
+        font-size: 20px;
+    }
+    h1{
+        color: #6517B8;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    div{
+        display: flex;
+        align-content: center;
+        flex-direction: row;
+        margin: 20px;
+        justify-content: center;
+        justify-content: space-around;
+
+    }
+
+    p{
+        font-size: 18px;
+    }
+
+    button{
+        background: #FFD824;
+        border: 1px #FFAE00 solid;
+        height:50px;
+        border-radius: 15px;
+        cursor: pointer;
+        width: 150px;
+        
+    }
+
+    button:hover{
+        background: #FFAE00;
+    }
+    </style>
+
+
+
+
+
+<script>
+/*
+Con dom podemos acceder y actualizar el contenido
+de un documento html dinamicamente
+
+Dom es un arbol invertido.
+
+partimos del html y se distribuyen los elementos en ramas.
+
+Diferencia entre elemento, atributo y texto.
+
+una etiqueta es un elemento.
+un identificador o una clase es un atributo.
+El texto que van dentro de la etiqueta.
+
+*/
+
+window.addEventListener("load",ejecutar);//deja cargar por completo el contenido html
+
+
+function ejecutar (){
+
+    document.getElementById("cambiarTexto").addEventListener("click",cambiarTexto);
+    document.getElementById("cambiarClases").addEventListener("click",cambiarClases);
+    document.getElementById("quitarClases").addEventListener("click",quitarClases);
+
+}
+
+
+function cambiarTexto(){
+    //Seleccionar un elemento según su id
+    document.getElementById("parrafo1").innerHTML = "Cambie el primer párrafo."
+    //Seleccionando todos los elementos de un etiqueta
+    document.getElementsByTagName("p")[1].innerHTML = "Cambie el segundo párrafo."
+    // Seleccionar por clase:
+    document.getElementsByClassName("miClase")[0].innerHTML="Cambie el párrafo tres."
+
+    //Seleccionar un elemento dentro de otro
+    let padre = document.getElementById("main");//Si existe otro elemento que contenga el mismo nombre id
+    let hijo = padre.getElementById("parrafo1");
+
+    
+
+    
+
+    //Otras manera de seleccionar.
+    //Seleccionar el primer elemento con un selector css
+    //document.querySelector("p.miClase");
+
+}
+
+
+
+function cambiarClases(){
+    document.getElementsByClassName("miClase")[0].setAttribute("class","otraClase");
+    document.getElementById("parrafo1").className="miClase";
+}
+
+function quitarClases(){
+    let eliminar = document.getElementsByTagName("p");
+    for( let i = 0;i<eliminar.length;i++){
+        eliminar[i].setAttribute("class","");
+    }
+    
+}
+</script>
+
+
+</head>
+<body>
+
+    
+        <!-- snippets  para la clase: -->
+
+        <!--  h1{Clase DOM II}+div#main>p#parrafo${Estees el párrafo$}*3 -->
+        <!--  div>button#cambiarTexto{Cambiar texto}+button#cambiarClases{cambiar clases}+button#quitarClases{Quitar Clases} -->
+
+    <h1>Clase Dom</h1>
+    <div id="main">
+        <p id="parrafo1">Este es el párrafo1</p>
+        <p id="parrafo2">Este es el párrafo2</p>
+        <p id="parrafo3 " class="miClase">Este es el párrafo3</p>
+    </div>
+    <br>
+    
+        <div>
+
+            <button id="cambiarTexto">Cambiar texto de párrafos</button>
+            <button id="cambiarClases">Cambiar clases de párrafos</button>
+            <button id="quitarClases">Qutar clases de todos los párrafos</button>
+        </div>
+        
+    
+</body>
+</html>

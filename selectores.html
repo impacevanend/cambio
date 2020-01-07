@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+
+/* SELECTORES;
+SELECION POR JAVASCRIPT ID, CLASS, TAGNAME->ETIQUETA
+ELIMINAR, CAMBIAR ATRIBUTOS DEL DOM */
+
+
+
+
+    
+    *{
+        margin: 0;
+        padding:0;
+    }
+ 
+#contenedor *{
+    border: 1px solid #6517B8;
+}
+/*Se centra en cada hijo del id=contenedor*/
+
+#contenedor{
+    width: 960px;
+    margin: auto;
+}
+
+.error{
+    color:#FFAE00;
+}
+
+/*Sirve para seleccionar varios elementos, 
+para aplicar estilos a un grupo de elementos.*/
+
+li a{
+    text-decoration: none;
+    font-size: 25px;
+    list-style: none;
+}
+/*Selector decendiente, en este ejemplo esta dentro de un li*/
+
+ul {
+    margin-left:50px;
+}
+/*Seleccionar etiqueta según su tipo*/
+
+ul+p{
+    color:#6517B8;
+}
+
+
+/*Selector adyacente, seleccionara solamente el 
+elemento que es inmediatamente precedio, en este
+caso el primer parrafo despues de cada ul*/
+
+div#contenedor>ul{
+    border: 5px solid  #FFAE00;
+}
+
+
+/*Solamente selecciona hijos directos*/
+
+a[title]{
+    color: #FF0035;
+}
+
+/* Selector de atributo, solo seleccionara
+las etiquetas a que tengan un atributo title. */
+
+a[href="https://www.google.com/"]{
+    color:#6517B8;
+}
+
+/*solo las etiquetas que tengan el atributo href con la dirección
+https://www.google.com/*/
+
+/* .error:hover{
+    background:#FF0035;
+}
+ */
+/*pseudo clase, cuando un usuario pasa 
+sobre un elemento*/
+</style>
+    
+</head>
+<body>
+
+    <div id="contenedor">
+        <ul>
+            <li>soy hijo de ul</li>
+            <li><a href="">soy hijo de ul</a> </li>
+            <li> <a title="holaMundo"> soy hijo de ul</a></li>
+        </ul>
+            <p>Soy parrafo</p>
+            <p> <a href="https://www.google.com/"> Soy otro parrafo</a></p>
+            <li class="error"> Soy hijo de ul </li>
+    </div>
+</body>
+</html>

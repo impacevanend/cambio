@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 2</title>
+<style>
+ *{
+         font-family: sans-serif;
+     } 
+
+    .miClase{
+        color: #FF0035;
+
+    }
+
+    .otraClase{
+        color:#6517B8;
+    }
+
+
+    div{
+        display: flex;
+        align-content: center;
+        flex-direction: row;
+        margin: 20px;
+        justify-content: center;
+        justify-content: space-around;
+
+    }
+
+    button{
+        background: #FF0035;
+        border: 1px #FFDBBB solid;
+        height:50px;
+        border-radius: 15px;
+        cursor: pointer;
+        width: 150px;
+        color: #FFDBBB;
+        font-size: 15px;
+        
+    }
+
+    button:hover{
+        background: #FFAE00;
+        color: #FF0035;
+    }
+
+    textarea{
+        border:1px #FFAE00 solid;
+        border-radius: 25px;
+        
+        font-size: 20px;
+        color: #6517B8;
+        text-align: center;
+
+    }
+
+    textarea:hover{
+        border:3px #FFAE00 solid;
+        
+    }
+
+    #div1>p{
+        color: #FF0035;
+    }
+
+
+
+</style>
+
+<script>
+
+window.addEventListener("load",ejecutar);//cargando primero html
+
+function ejecutar(){
+
+    document.getElementById("crearParrafo1").addEventListener("click",crearParrafo1);
+    document.getElementById("crearImagen").addEventListener("click",crearImagen);
+    document.getElementById("borrarUltimo").addEventListener("click",borrarUltimo);
+    document.getElementById("borrarPrimero").addEventListener("click",borrarPrimero);
+    document.getElementById("sustituirVacio").addEventListener("click",sustituirVacio);
+
+}
+
+function crearParrafo1(){
+
+    //Va a crear un parrafo que obtiene de la etiqueta textarea.
+    // crear elemento con js
+
+    let elemento = document.createElement("p"); 
+
+    let texto = document.createTextNode(document.getElementById("texto").value);//extraer el texto de la etiqueta text area.
+
+    elemento.appendChild(texto);//Añade un hijo al final del parrafo.
+    document.getElementById("div1").appendChild(elemento);
+}
+
+
+function crearImagen(){
+
+    //Va a crear un parrafo que obtiene de la etiqueta textarea.
+    // crear elemento con js
+
+    let elemento = document.createElement("img");
+
+    elemento.setAttribute("src","fondo.png");
+    
+    // otra forma
+    //elemento.src = "fondo.png"
+
+    //Añade un hijo al final del parrafo.
+    document.getElementById("div2").appendChild(elemento);
+}
+
+function borrarUltimo (){
+
+    let padre = document.getElementById("div1");
+    let hijo = padre.lastChild;
+
+    // Eliminar el hijo.
+
+    padre.removeChild(hijo);
+
+    let padre2 = document.getElementById("div2");
+    let hijo2 = padre2.lastChild;
+
+    // Eliminar el hijo.
+
+    padre2.removeChild(hijo2);
+
+
+}
+
+function borrarPrimero (){
+
+    let padre = document.getElementById("div1");
+    let hijo = padre.firstChild;
+
+    // Eliminar el hijo.
+
+    padre.removeChild(hijo);
+
+    let padre2 = document.getElementById("div2");
+    let hijo2 = padre2.firstChild;
+
+    // Eliminar el hijo.
+
+    padre2.removeChild(hijo2);
+
+
+}
+
+function sustituirVacio(){
+    let padre = document.getElementById("div1");
+    let elemento = document.createElement("p");
+    let texto = document.createTextNode("Vacio");
+
+    elemento.appendChild(texto);
+
+    //Sustituir un elemento hijo
+
+    padre.replaceChild(elemento,padre.firstChild);
+}
+
+</script>
+
+</head>
+<body>
+        <!-- snippet  para la clase: -->
+
+        <!-- div#div1+br+textarea#texto+br+button#crearParrafo${Crear Parrafo$}*5 -->
+    <div id="div1"></div>
+    <br>
+    <div>
+        
+        <textarea id="texto" cols="30" rows="10"></textarea>
+
+    </div>
+    <br>
+    
+    <div>
+
+        <button id="crearParrafo1">Crear Parrafo1</button>
+        <button id="crearImagen">Crear Imagen</button>
+        <button id="borrarUltimo">Borrar Último</button>
+        <button id="borrarPrimero">Borrar Primero</button>
+        <button id="sustituirVacio">Sustituir Vacío.</button>
+
+    </div>
+
+    <div id="div2"></div>
+        
+
+    
+
+</body>
+</html>
